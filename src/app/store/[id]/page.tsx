@@ -1,5 +1,6 @@
 import { IproductItemProps } from "./../../../components/ProductItem";
 import Container from "./../../../components/Container";
+import AddToCart from "./../../../components/AddToCart";
 
 export default async function Prodcut({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -14,15 +15,7 @@ export default async function Prodcut({ params }: { params: { id: string } }) {
           <p className="font-bold">
             {data.price}:<span>20$</span>
           </p>
-          <div className="mt-4">
-            <button className="px-4 py-2 rounded bg-sky-500 text-white">
-              +
-            </button>
-            <span className="mx-4">3</span>
-            <button className="px-4 py-2 rounded bg-sky-500 text-white">
-              -
-            </button>
-          </div>
+          <AddToCart />
         </div>
         <div className="col-span-3  rtl text-right">
           <img src={data.image} alt="" />
