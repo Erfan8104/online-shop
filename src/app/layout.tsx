@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Navbar from "./../components/Navbar";
-
+import { ShoppingCartContextProvider } from "./../context/ShoppingCartContext";
 import "./globals.css";
 import Layout from "./../components/Layout";
 
@@ -16,9 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Layout>
-        <body>{children}</body>
-      </Layout>
+      <ShoppingCartContextProvider>
+        <Layout>
+          <body>{children}</body>
+        </Layout>
+      </ShoppingCartContextProvider>
     </html>
   );
 }
