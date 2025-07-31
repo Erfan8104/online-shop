@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "لپ تاپ ایسوس",
+      "image": "https://placehold.co/300x200/FFCCCC/000000?text=لپ+تاپ+ایسوس",
+      "description": "لپ تاپ قدرتمند با پردازنده Core i7 و 16 گیگابایت رم.",
+      "price": 25000000
+    },
+    {
+      "id": "2",
+      "title": "گوشی سامسونگ",
+      "image": "https://placehold.co/300x200/CCFFCC/000000?text=گوشی+سامسونگ",
+      "description": "گوشی هوشمند با دوربین 108 مگاپیکسلی و صفحه نمایش AMOLED.",
+      "price": 15000000
+    },
+    {
+      "id": "3",
+      "title": "هدفون بلوتوثی",
+      "image": "https://placehold.co/300x200/CCCCFF/000000?text=هدفون+بلوتوثی",
+      "description": "هدفون با کیفیت صدای عالی و عمر باتری طولانی.",
+      "price": 2500000
+    },
+    {
+      "id": "4",
+      "title": "ماوس گیمینگ",
+      "image": "https://placehold.co/300x200/FFFFCC/000000?text=ماوس+گیمینگ",
+      "description": "ماوس ارگونومیک با دقت بالا برای بازی.",
+      "price": 800000
+    },
+    {
+      "id": "5",
+      "title": "کیبورد مکانیکی",
+      "image": "https://placehold.co/300x200/FFCCFF/000000?text=کیبورد+مکانیکی",
+      "description": "کیبورد با سوییچ‌های مکانیکی و نورپردازی RGB.",
+      "price": 1800000
+    },
+    {
+      "id": "6",
+      "title": "مانیتور 27 اینچ",
+      "image": "https://placehold.co/300x200/CCFFFF/000000?text=مانیتور+27+اینچ",
+      "description": "مانیتور Full HD با نرخ بروزرسانی 144 هرتز.",
+      "price": 10000000
+    },
+    {
+      "id": "7",
+      "title": "ساعت هوشمند",
+      "image": "https://placehold.co/300x200/FFDDAA/000000?text=ساعت+هوشمند",
+      "description": "ساعت هوشمند با قابلیت پایش سلامت و اعلان‌ها.",
+      "price": 4000000
+    },
+    {
+      "id": "8",
+      "title": "هارد اکسترنال 1TB",
+      "image": "https://placehold.co/300x200/AAFFDD/000000?text=هارد+اکسترنال",
+      "description": "هارد دیسک اکسترنال با سرعت بالا و ظرفیت 1 ترابایت.",
+      "price": 3000000
+    }
+  ]
+}
