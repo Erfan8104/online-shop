@@ -23,6 +23,25 @@ export function ShoppingCartContextProvider({
   children: React.ReactNode;
 }) {
   const [cartItems, setCartItems] = useState<CartItems[]>([]);
+  const handleIncreaseProductQty = (id: number) => {
+    setCartItems((currentItem) => {
+      let isNotProductExist = currentItem.find((item) => item.id == id) == null;
+      if (isNotProductExist) {
+        return [...currentItem, { id: id, qty: 1 }];
+      } else {
+        return currentItem.map((item) => {
+          if (item.id == id) {
+            return {
+              ...item,
+              qty: item.qty + 1,
+            };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
   return (
     <ShoppingCartContext.Provider value={{ cartItems }}>
       {children}
