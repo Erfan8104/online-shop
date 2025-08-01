@@ -15,7 +15,7 @@ export default async function Prodcut({ params }: { params: { id: string } }) {
           <p className="font-bold">
             {data.price}:<span>20$</span>
           </p>
-          <AddToCart />
+          <AddToCart id={id} />
         </div>
         <div className="col-span-3  rtl text-right">
           <img src={data.image} alt="" />
