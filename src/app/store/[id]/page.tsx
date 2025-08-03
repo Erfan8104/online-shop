@@ -4,7 +4,7 @@ import AddToCart from "./../../../components/AddToCart";
 
 export default async function Prodcut({ params }: { params: { id: string } }) {
   const { id } = await params;
-  const result = await fetch(`http://localhost:3004/products/${id}`);
+  const result = await fetch(`http://localhost:3000/products/${id}`);
   const data = (await result.json()) as IproductItemProps;
   return (
     <Container>

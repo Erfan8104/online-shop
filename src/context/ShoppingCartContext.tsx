@@ -10,7 +10,11 @@ type CartItems = {
 };
 type IShoppingCartContext = {
   cartItems: CartItems[];
+  handleIncreaseProductQty: (id: number) => void;
+  getProductQty: (id: number) => number;
+  cartTotalQty: number;
 };
+
 export const ShoppingCartContext = createContext({} as IShoppingCartContext);
 
 export const useShoppingCartContext = () => {
@@ -23,6 +27,14 @@ export function ShoppingCartContextProvider({
   children: React.ReactNode;
 }) {
   const [cartItems, setCartItems] = useState<CartItems[]>([]);
+  const cartTotalQty = cartItems.reduce((totalQty, item) => {
+    return totalQty + item.qty;
+  }, 0);
+
+  const getProductQty = (id: number) => {
+    return cartItems.find((item) => item.id == id)?.qty || 0;
+  };
+
   const handleIncreaseProductQty = (id: number) => {
     setCartItems((currentItem) => {
       let isNotProductExist = currentItem.find((item) => item.id == id) == null;
@@ -42,8 +54,16 @@ export function ShoppingCartContextProvider({
       }
     });
   };
+
   return (
-    <ShoppingCartContext.Provider value={{ cartItems }}>
+    <ShoppingCartContext.Provider
+      value={{
+        cartItems,
+        handleIncreaseProductQty,
+        getProductQty,
+        cartTotalQty,
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );
