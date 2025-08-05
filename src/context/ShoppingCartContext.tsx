@@ -13,6 +13,7 @@ type IShoppingCartContext = {
   handleIncreaseProductQty: (id: number) => void;
   getProductQty: (id: number) => number;
   cartTotalQty: number;
+  handleDecreaseProductQty: (id: number) => void;
 };
 
 export const ShoppingCartContext = createContext({} as IShoppingCartContext);
@@ -36,17 +37,34 @@ export function ShoppingCartContextProvider({
   };
 
   const handleIncreaseProductQty = (id: number) => {
-    setCartItems((currentItem) => {
-      let isNotProductExist = currentItem.find((item) => item.id == id) == null;
+    setCartItems((currentItems) => {
+      let isNotProductExist =
+        currentItems.find((item) => item.id == id) == null;
       if (isNotProductExist) {
-        return [...currentItem, { id: id, qty: 1 }];
+        return [...currentItems, { id: id, qty: 1 }];
       } else {
-        return currentItem.map((item) => {
+        return currentItems.map((item) => {
           if (item.id == id) {
             return {
               ...item,
               qty: item.qty + 1,
             };
+          } else {
+            return item;
+          }
+        });
+      }
+    });
+  };
+  const handleDecreaseProductQty = (id: number) => {
+    setCartItems((currentItems) => {
+      let isLastOne = currentItems.find((item) => item.id == id)?.qty == 1;
+      if (isLastOne) {
+        return currentItems.filter((item) => item.id != id);
+      } else {
+        return currentItems.map((item) => {
+          if (item.id == id) {
+            return { ...item, qty: item.qty - 1 };
           } else {
             return item;
           }
@@ -62,6 +80,7 @@ export function ShoppingCartContextProvider({
         handleIncreaseProductQty,
         getProductQty,
         cartTotalQty,
+        handleDecreaseProductQty,
       }}
     >
       {children}
