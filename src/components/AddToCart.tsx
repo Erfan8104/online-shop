@@ -8,6 +8,7 @@ export default function AddToCart({ id }: { id: string }) {
     handleIncreaseProductQty,
     getProductQty,
     handleDecreaseProductQty,
+    handleRemoveProduct,
   } = useShoppingCartContext();
 
   return (
@@ -27,6 +28,12 @@ export default function AddToCart({ id }: { id: string }) {
           -
         </button>
       </div>
+      <button
+        onClick={() => handleRemoveProduct(parseInt(id))}
+        className="bg-red-500 text-white rounded px-6 py-2 mt-2  "
+      >
+        حذف از سبد{" "}
+      </button>
     </div>
   );
 }
