@@ -1,16 +1,18 @@
+"use client";
+
 import Container from "./../../components/Container";
 import CartItem from "./../../components/CartItem";
+import { useShoppingCartContext } from "./../../context/ShoppingCartContext";
 
 export default function Cart() {
+  const { cartItems } = useShoppingCartContext();
   return (
     <Container>
       <h1 className="text-right my-4 ">سبد خرید </h1>
       <div className=" ">
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
-        <CartItem />
+        {cartItems.map((item) => (
+          <CartItem key={item.id} {...item} />
+        ))}
       </div>
       <div className="border shadow-md text-right p-4">
         <h3 className="rtl">
