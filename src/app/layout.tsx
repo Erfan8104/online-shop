@@ -16,11 +16,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ShoppingCartContextProvider>
-        <Layout>
-          <body>{children}</body>
-        </Layout>
-      </ShoppingCartContextProvider>
+      <body>
+        <ShoppingCartContextProvider>
+          <Layout>{children}</Layout>
+        </ShoppingCartContextProvider>
+      </body>
     </html>
   );
 }
