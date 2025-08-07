@@ -56,5 +56,11 @@
       "description": "هارد دیسک اکسترنال با سرعت بالا و ظرفیت 1 ترابایت.",
       "price": 3000000
     }
+  ],
+
+  "discounts": [
+    { "id": 1, "code": "OFF10", "percentage": 10 },
+    { "id": 2, "code": "OFF10", "percentage": 20 },
+    { "id": 3, "code": "OFF10", "percentage": 30 }
   ]
 }
