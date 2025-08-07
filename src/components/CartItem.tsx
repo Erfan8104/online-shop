@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductItem, { IproductItemProps } from "./../components/ProductItem";
 import axios from "axios";
 import AddToCart from "./AddToCart";
-
+import { formatNumberWithCommas } from "./../utils/number";
 interface ICartItemProps {
   id: number;
   qty: number;
@@ -18,20 +18,23 @@ export default function CartItem({ id, qty }: ICartItemProps) {
   }, []);
 
   return (
-    <div className="grid grid-cols-12 bg-slate-100 mb-4">
-      <div className="col-span-9 text-right p-4">
-        <h2 className="font-bold text-xl">{data.title}</h2>
-        <p>
-          {" "}
-          تعداد:<span>{qty}</span>
-        </p>
-        <p>
-          قیمت محصول <span>{data.price}$</span>
-        </p>
-
-        <AddToCart id={id.toString()} />
+    <>
+      <div className="grid grid-cols-12 bg-slate-100 mb-4">
+        <div className="col-span-9 text-right p-4">
+          <h2 className="font-bold text-xl">{data.title}</h2>
+          <p>
+            {" "}
+            تعداد:<span>{qty}</span>
+          </p>
+          <p>
+            قیمت محصول <span>{formatNumberWithCommas(data.price)}$</span>
+          </p>
+          <div className="">
+            <AddToCart id={id.toString()} />
+          </div>
+        </div>
+        <img className="col-span-3" src={data.image} alt="" />
       </div>
-      <img className="col-span-3" src={data.image} alt="" />
-    </div>
+    </>
   );
 }

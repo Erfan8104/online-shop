@@ -3,9 +3,19 @@
 import Container from "./../../components/Container";
 import CartItem from "./../../components/CartItem";
 import { useShoppingCartContext } from "./../../context/ShoppingCartContext";
-
+import { IproductItemProps } from "@/components/ProductItem";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { formatNumberWithCommas } from "./../../utils/number";
 export default function Cart() {
   const { cartItems } = useShoppingCartContext();
+  const [data, setData] = useState<IproductItemProps[]>([]);
+  useEffect(() => {
+    axios("http://localhost:3000/products").then((result) => {
+      const { data } = result;
+      setData(data);
+    });
+  }, []);
   return (
     <Container>
       <h1 className="text-right my-4 ">سبد خرید </h1>
@@ -17,7 +27,18 @@ export default function Cart() {
       <div className="border shadow-md text-right p-4">
         <h3 className="rtl">
           {" "}
-          قیمت کل :<span>77$</span>
+          قیمت کل :
+          <span>
+            {formatNumberWithCommas(
+              cartItems.reduce((total, item) => {
+                let selectedProduct = data.find(
+                  (product) => product.id == item.id.toString()
+                );
+                return total + (selectedProduct?.price || 0) * item.qty;
+              }, 0)
+            )}
+            $
+          </span>
         </h3>
         <h3 className="rtl">
           {" "}
