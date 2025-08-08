@@ -5,6 +5,15 @@ export interface IproductItemProps {
   title: string;
   price: number;
 }
+export interface IProductList {
+  first: number | null;
+  items: number | null;
+  last: number | null;
+  next: number | null;
+  pages: number | null;
+  prev: null;
+  data: IproductItemProps[];
+}
 export default function ProductItem({
   price,
   image,
