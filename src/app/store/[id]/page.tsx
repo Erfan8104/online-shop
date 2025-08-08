@@ -1,6 +1,7 @@
 import { IproductItemProps } from "./../../../components/ProductItem";
 import Container from "./../../../components/Container";
 import AddToCart from "./../../../components/AddToCart";
+import Pagination from "./../../../components/Pagination";
 
 export default async function Prodcut({ params }: { params: { id: string } }) {
   const { id } = await params;
@@ -20,7 +21,8 @@ export default async function Prodcut({ params }: { params: { id: string } }) {
         <div className="col-span-3  rtl text-right">
           <img src={data.image} alt="" />
         </div>
-      </div>
+      </div>      
+
     </Container>
   );
 }

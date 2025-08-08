@@ -1,21 +1,33 @@
 import Container from "./../../components/Container";
-import { IproductItemProps } from "./../../components/ProductItem";
+import { IProductList } from "./../../components/ProductItem";
 
-import ProdcutItem from "./../../components/ProductItem";
+import ProductItem from "./../../components/ProductItem";
 import Link from "next/link";
-export default async function Store() {
-  const result = await fetch("http://localhost:3000/products");
-  const data = (await result.json()) as IproductItemProps[];
+import Pagination from "./../../components/Pagination";
+
+interface IStoreProps {
+  params: Promise<{}>;
+  searchParams: Promise<{ page: string; per_page: string }>;
+}
+
+export default async function Store({ searchParams }: IStoreProps) {
+  const page = (await searchParams).page ?? "1";
+  const per_page = (await searchParams).per_page ?? "5";
+  const result = await fetch(
+    `http://localhost:3000/products?_page=${page}&_per_page=${per_page}`
+  );
+  const data = (await result.json()) as IProductList[];
   return (
     <Container>
       <h1 className="text-right py-4">فروشگاه </h1>
       <div className="grid grid-cols-4 gap-1">
-        {data.map((item) => (
+        {data.data.map((item) => (
           <Link key={item.id} href={`/store/${item.id}`}>
-            <ProdcutItem {...item} />
+            <ProductItem {...item} />
           </Link>
         ))}
       </div>
+      <Pagination pageCount={data.pages} />
     </Container>
   );
 }
