@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, redirect } from "next/navigation";
 import Container from "./Container";
 import { useShoppingCartContext } from "@/context/ShoppingCartContext";
+import Cookies from "js-cookie";
 export default function Navbar() {
   const pathname = usePathname();
   const navLinks = [
@@ -15,6 +16,14 @@ export default function Navbar() {
       href: "/store",
       title: "فروشگاه",
     },
+    {
+      href: "/dashboard",
+      title: "دشبورد ",
+    },
+    {
+      href: "/login",
+      title: "ورود ",
+    },
   ];
   const { cartTotalQty } = useShoppingCartContext();
   return (
@@ -25,6 +34,15 @@ export default function Navbar() {
             {cartTotalQty}
           </span>
           <Link href="/cart">سبد خرید </Link>
+          <button
+            className="ml-4 text-red-600 "
+            onClick={() => {
+              Cookies.remove("token");
+              redirect("/");
+            }}
+          >
+            خروج
+          </button>
         </div>
         <div className="col-span-9 ">
           <nav className="shadow py-4 flex flex-row-reverse ">
